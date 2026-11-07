@@ -1,0 +1,55 @@
+# Aspect-Based Sentiment Analysis - Requirements
+# Tested with Python 3.10 - 3.13 on Windows, macOS, and Linux (CPU-only compatible)
+#
+# NOTE: exact TensorFlow build availability differs by Python version (pip
+# only publishes wheels for certain TF versions per interpreter version).
+# Rather than strict pins that break on newer/older Python installs, this
+# file pins MINIMUM compatible versions and lets pip pick the latest
+# matching release for your interpreter automatically.
+
+# --- Deep Learning (TensorFlow/Keras only, NO PyTorch) ---
+tensorflow>=2.17
+
+# --- NLP / Transformers (TensorFlow backend) ---
+transformers>=4.44,<5.0
+tokenizers>=0.19
+# `datasets` is pinned below 3.0 because 3.0+ removed support for loading
+# script-based dataset repos (used by src/data/download_data.py's automatic
+# download path). If you don't need the automatic download, `datasets>=3.0`
+# is fine too — just use the manual XML download path in data/README.md.
+datasets>=2.21,<3.0
+huggingface-hub>=0.24
+
+# --- Data processing ---
+pandas>=2.1
+numpy>=1.26
+
+# --- Evaluation ---
+scikit-learn>=1.4
+seqeval>=1.2.2
+
+# --- Visualization ---
+matplotlib>=3.8
+seaborn>=0.13
+
+# --- Web application ---
+streamlit>=1.32
+
+# --- Utilities ---
+tqdm>=4.66
+requests>=2.31
+lxml>=5.1
+pytest>=8.0
+
+# NOTE:
+# - transformers>=4.44 is compatible with tensorflow>=2.17 (TF* model classes,
+#   e.g. TFAutoModelForTokenClassification / TFAutoModelForSequenceClassification).
+# - Minimum-version pins (rather than exact `==`) let pip resolve whichever
+#   TensorFlow build actually has a wheel for your Python version. If `pip
+#   install -r requirements.txt` still fails to find a tensorflow version,
+#   run `pip index versions tensorflow` to see what's available for your
+#   interpreter and check python --version — TensorFlow typically only
+#   supports the last 3-4 Python minor versions.
+# - If you want to use a GPU on Windows, native Windows GPU support was
+#   dropped after TensorFlow 2.10; use TensorFlow via WSL2 for GPU acceleration.
+#   CPU-only training works out of the box with the versions above.

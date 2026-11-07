@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables / secrets
+.env
+.env.local
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Models and checkpoints (do not commit large binary files)
+models/*
+!models/.gitkeep
+checkpoints/
+*.h5
+*.keras
+*.ckpt
+*.ckpt.*
+*.pb
+saved_model/
+
+# Data (do not commit raw/processed data)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Evaluation outputs
+reports/*.png
+reports/*.json
+!reports/.gitkeep
